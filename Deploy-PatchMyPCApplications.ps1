@@ -9,7 +9,7 @@
 #Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
 
 # Site configuration
-$SiteCode = "COE" # Site code 
+$SiteCode = "sitecode" # Site code 
 $ProviderMachineName = "siteserver" # SMS Provider machine name
 
 # Customizations
