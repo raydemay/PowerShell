@@ -66,7 +66,7 @@ $DeletedOSImages = $AllCMOSImagesNotEnabledAndDeployed |
 #endregion
 
 #region Find and remove orphaned WIMS
-# This section is finding orphaned WIMs in sccm-dp1 source directories
+# This section is finding orphaned WIMs in source directories
 Set-Location C:
 $SourceDirs = Get-ChildItem -Path "\\UNC-path-for-source-files" -Directory -Exclude Drivers, Imported-Task-Sequences, OSD_Diskpart_Scripts, OSDBackground, temp, UDI, USMT, Win10Customization, 'Windows_10_Customization--2.0', winpe-mount, Client* 
 $AllOperatingSystemWIMs = Get-ChildItem -Path $SourceDirs -Recurse -File -filter *.wim | Select-Object -ExpandProperty FullName | Sort-Object 
@@ -81,7 +81,7 @@ $OrphanedWIMs | Select-Object FullName | Export-CSV C:\Users\demay.9a\Desktop\or
 $DeletedWIMS = $OrphanedWIMs | 
     Select-Object FullName | 
     Out-GridView -Title "Select operating system WIM files to delete" -PassThru | 
-    Export-CSV C:\Users\demay.9a\Desktop\wimstodelete_$((Get-Date).ToString('MM-dd-yyyy')).csv -NoTypeInformation
+    Export-CSV .\Desktop\wimstodelete_$((Get-Date).ToString('MM-dd-yyyy')).csv -NoTypeInformation
 #endregion
 
 <# Scratch work
